@@ -1,0 +1,39 @@
+.blur{
+    filter: blur(8px);
+}
+
+.bg{
+    position: absolute;
+    /* expand the outline bleed so the animated gradient always covers the card corners */
+    inset: -8px;
+    border-radius: 18px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.bg::before{
+    content: '';
+    /* increase rotating gradient size so it fully covers rounded corners */
+    min-height: 150%;
+    min-width: 150%;
+    background-image: conic-gradient(from 0deg, 
+    #ff004c, 
+    #ff8c00, 
+    #ffd200, 
+    #00d084, 
+    #00a3ff, 
+    #a64dff, 
+    #ff004c);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    aspect-ratio: 1/1;
+    animation: spin 1200ms linear infinite;
+    transform-origin: 50% 50%;
+    transform: rotate(0deg) translate(-50%, -50%);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg) translate(-50%, -50%); }
+    to { transform: rotate(360deg) translate(-50%, -50%); }
+}
